@@ -1,0 +1,39 @@
+.root {
+  position: sticky;
+  left: 0;
+  top: 0;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 40px;
+  padding: 33px 0;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  column-gap: 40px;
+}
+
+.logo {
+  fill: var(--color-text);
+}
+
+.navigation {
+  display: flex;
+  column-gap: 32px;
+
+  a {
+    color: var(--color-gray);
+    text-transform: uppercase;
+  }
+}
+
+.button {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+}

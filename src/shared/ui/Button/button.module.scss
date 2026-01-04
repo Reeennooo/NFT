@@ -1,0 +1,90 @@
+.root {
+  cursor: pointer;
+
+  &.primary {
+    .rootSquircle {
+      background-color: var(--color-primary);
+    }
+
+    .inner {
+      color: var(--color-white);
+      background-color: var(--color-primary);
+    }
+
+    &:hover {
+      .inner {
+        color: var(--color-text);
+        background-color: var(--color-D7D7D7);
+      }
+    }
+  }
+
+  &.secondary {
+    .rootSquircle {
+      background-color: var(--color-primary);
+    }
+
+    .inner {
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+  }
+
+  &.textUppercase {
+    text-transform: uppercase;
+  }
+
+  &.textNormal {
+    text-transform: initial;
+  }
+
+  &.large {
+    height: 68px;
+  }
+
+  &.medium {
+    height: 60px;
+  }
+
+  &.normal {
+    height: 54px;
+  }
+
+  &.small {
+    height: 50px;
+  }
+
+  // fonts
+  &.inter {
+    font-family: var(--font-inter);
+  }
+
+  &.poppins {
+    font-family: var(--font-poppins);
+  }
+
+  &.publicSans {
+    font-family: var(--font-public-sans);
+  }
+}
+
+.rootSquircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.inner {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  white-space: nowrap;
+}
+
+
+

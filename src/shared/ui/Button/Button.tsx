@@ -1,0 +1,58 @@
+import {type FC, memo} from 'react';
+import {SquircleWrap} from '../SquircleWrap/SquircleWrap.tsx';
+import styles from './Button.module.scss';
+import classNames from 'classnames';
+
+interface IProps {
+  text: string;
+  onClick: () => void;
+  style: ButtonStyle;
+  size: ButtonSize;
+  width: string;
+  textTransform?: ButtonTextTransform;
+  fontFamily?: ButtonFontFamily;
+  className?: string;
+}
+
+type ButtonStyle = 'primary' | 'secondary';
+type ButtonTextTransform = 'textUppercase' | 'textNormal';
+type ButtonSize = 'large' | 'medium' | 'normal' | 'small';
+type ButtonFontFamily = 'inter' | 'poppins' | 'publicSans';
+
+export const Button: FC<IProps> = memo((props) => {
+  const {
+    text,
+    width,
+    className,
+    style,
+    textTransform = 'normal',
+    size = 'normal',
+    fontFamily = 'inter',
+    onClick
+  } = props;
+  const onClickCustom = () => {
+    onClick();
+  }
+
+  return (
+    <button
+      style={{width}}
+      className={classNames(styles.root,
+        styles[style],
+        styles[size],
+        styles[textTransform],
+        styles[fontFamily],
+        className
+      )}
+      onClick={onClickCustom}
+    >
+      <SquircleWrap
+        className={classNames(styles.rootSquircle)}
+      >
+        <SquircleWrap cornerRadius={14} className={styles.inner}>
+          <span>{text}</span>
+        </SquircleWrap>
+      </SquircleWrap>
+    </button>
+  );
+});
