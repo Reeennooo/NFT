@@ -1,4 +1,4 @@
-import {type FC, memo} from 'react';
+import {type FC, memo, useMemo} from 'react';
 import {SquircleWrap} from '../SquircleWrap/SquircleWrap.tsx';
 import styles from './Button.module.scss';
 import classNames from 'classnames';
@@ -30,6 +30,22 @@ export const Button: FC<IProps> = memo((props) => {
     fontFamily = 'inter',
     onClick
   } = props;
+
+  const cornerRadius = useMemo(() => {
+    if (
+      size === 'small'
+      || size === 'medium'
+      || size === 'large'
+    ) {
+      return 12
+    }
+    return 16
+  }, [
+    size
+  ])
+
+  const cornerRadiusInner = cornerRadius - 2;
+
   const onClickCustom = () => {
     onClick();
   }
@@ -48,8 +64,9 @@ export const Button: FC<IProps> = memo((props) => {
     >
       <SquircleWrap
         className={classNames(styles.rootSquircle)}
+        cornerRadius={cornerRadius}
       >
-        <SquircleWrap cornerRadius={14} className={styles.inner}>
+        <SquircleWrap cornerRadius={cornerRadiusInner} className={styles.inner}>
           <span>{text}</span>
         </SquircleWrap>
       </SquircleWrap>

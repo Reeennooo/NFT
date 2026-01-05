@@ -6,6 +6,7 @@ import Settings from '../../assets/icons/settings.svg?react';
 import ArrowTop from '../../assets/icons/arrow-top.svg?react';
 import Camera from '../../assets/icons/camera.svg?react';
 import Clock from '../../assets/icons/clock.svg?react';
+import Ethereum from '../../assets/icons/ethereum.svg?react';
 
 export type IconList =
   'cross'
@@ -13,6 +14,7 @@ export type IconList =
   | 'arrow-top'
   | 'camera'
   | 'clock'
+  | 'ethereum'
   | 'warning';
 
 interface IProps {
@@ -56,5 +58,7 @@ export const Icon: FC<IProps> = memo(function Icon(props) {
     return <Camera {...properties} />;
   case 'clock':
     return <Clock {...properties} />;
+  case 'ethereum':
+    return <Ethereum {...properties} />;
   }
 });

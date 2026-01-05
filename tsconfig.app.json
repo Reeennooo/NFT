@@ -34,5 +34,8 @@
       "processes/*": ["processes/*"]
     }
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "src/@types/**/*"
+  ]
 }
