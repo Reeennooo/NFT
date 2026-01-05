@@ -1,0 +1,20 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.title {
+  font-family: var(--font-public-sans);
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 42px;
+}
+
+.subtitle {
+  font-family: var(--font-inter);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-muted3);
+}

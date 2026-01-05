@@ -28,6 +28,17 @@
       color: var(--color-text);
       background-color: var(--color-bg);
     }
+
+    &:hover {
+      .rootSquircle {
+        background-color: var(--color-white);
+      }
+
+      .inner {
+        color: var(--color-text);
+        background-color: var(--color-D7D7D7);
+      }
+    }
   }
 
   &.textUppercase {
@@ -69,6 +80,7 @@
 }
 
 .rootSquircle {
+  transition: background-color 0.3s ease-in-out;
   display: flex;
   align-items: center;
   justify-content: center;
