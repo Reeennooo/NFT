@@ -31,7 +31,7 @@ const itemVariants = {
 
 export const Hero = () => {
   return (
-    <div className={styles.root} >
+    <section className={styles.root} >
       <Container>
         <div className={styles.inner}>
           <motion.div
@@ -43,7 +43,6 @@ export const Hero = () => {
             <motion.h1 className={styles.title} variants={itemVariants}>
               Discover And<br/>Create NFTs
             </motion.h1>
-
             <motion.p variants={itemVariants} className={styles.text}>
               Discover, Create and Sell NFTs On Our NFT Marketplace<br/>With Over Thousands Of NFTs And Get a <span className={styles.bold}>$20 bonus</span>.
             </motion.p>
@@ -76,6 +75,6 @@ export const Hero = () => {
           <HeroDecor />
         </div>
       </Container>
-    </div>
+    </section>
   );
 };

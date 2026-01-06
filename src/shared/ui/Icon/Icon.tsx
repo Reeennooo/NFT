@@ -7,6 +7,12 @@ import ArrowTop from '../../assets/icons/arrow-top.svg?react';
 import Camera from '../../assets/icons/camera.svg?react';
 import Clock from '../../assets/icons/clock.svg?react';
 import Ethereum from '../../assets/icons/ethereum.svg?react';
+import ArrowLeft from '../../assets/icons/arrow-left.svg?react';
+import ArrowRight from '../../assets/icons/arrow-right.svg?react';
+import Inst from 'shared/assets/socials/inst.svg?react';
+import Twitter from 'shared/assets/socials/twitter.svg?react';
+import Facebook from 'shared/assets/socials/facebook.svg?react';
+import Linkedin from 'shared/assets/socials/linkedin.svg?react';
 
 export type IconList =
   'cross'
@@ -15,6 +21,12 @@ export type IconList =
   | 'camera'
   | 'clock'
   | 'ethereum'
+  | 'arrow-left'
+  | 'arrow-right'
+  | 'inst'
+  | 'twitter'
+  | 'facebook'
+  | 'linkedin'
   | 'warning';
 
 interface IProps {
@@ -60,5 +72,17 @@ export const Icon: FC<IProps> = memo(function Icon(props) {
     return <Clock {...properties} />;
   case 'ethereum':
     return <Ethereum {...properties} />;
+  case 'arrow-right':
+    return <ArrowRight {...properties} />;
+  case 'arrow-left':
+    return <ArrowLeft {...properties} />;
+  case 'inst':
+    return <Inst {...properties} />;
+  case 'twitter':
+    return <Twitter {...properties} />;
+  case 'linkedin':
+    return <Linkedin {...properties} />;
+  case 'facebook':
+    return <Facebook {...properties} />;
   }
 });

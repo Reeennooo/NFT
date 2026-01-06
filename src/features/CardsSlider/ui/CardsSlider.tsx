@@ -3,6 +3,8 @@ import {Card} from 'shared/ui/Card/Card.tsx';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import {useRef} from 'react';
+import {SquircleWrap} from 'shared/ui/SquircleWrap/SquircleWrap.tsx';
+import {Icon} from 'shared/ui/Icon/Icon.tsx';
 
 export const CardsSlider = () => {
 
@@ -10,9 +12,10 @@ export const CardsSlider = () => {
   const nextRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <div className={styles.root}>
+    <section className={styles.root}>
       <h2 className={styles.title}>Weekly - Top NFT</h2>
       <Swiper
+        style={{padding: '70px 0'}}
         slidesPerView='auto'
         spaceBetween={40}
         loop={true}
@@ -23,7 +26,11 @@ export const CardsSlider = () => {
         }}
         onSwiper={() => {
           setTimeout((swiper: any) => {
-            if (prevRef.current && nextRef.current) {
+            if (
+              prevRef.current
+              && nextRef.current
+              && swiper
+            ) {
               swiper.params.navigation.prevEl = prevRef.current;
               swiper.params.navigation.nextEl = nextRef.current;
               swiper.navigation.init();
@@ -63,10 +70,18 @@ export const CardsSlider = () => {
           <Card image={'/images/cards/1.jpg'} title={'Sun-Glass'} bid={1.75} />
         </SwiperSlide>
       </Swiper>
-      <div>
-        <button ref={prevRef}>Назад</button>
-        <button ref={nextRef}>Вперед</button>
+      <div className={styles.navigationWrapper}>
+        <div className={styles.navigationRoot}>
+          <SquircleWrap className={styles.navigation}>
+            <button ref={prevRef}>
+              <Icon name={'arrow-left'} properties={{className: styles.arrow}} />
+            </button>
+            <button ref={nextRef}>
+              <Icon name={'arrow-right'} properties={{className: styles.arrow}} />
+            </button>
+          </SquircleWrap>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };

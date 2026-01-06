@@ -1,0 +1,25 @@
+.root {
+  display: flex;
+  align-items: center;
+  column-gap: 40px;
+  width: max-content;
+
+  a {
+    display: block;
+    width: 24px;
+    height: 24px;
+
+    &:hover {
+      svg {
+        fill: var(--color-white);
+      }
+    }
+  }
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  fill: var(--color-535353);
+  transition: fill 0.3s ease-in-out;
+}

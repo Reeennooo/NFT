@@ -4,9 +4,19 @@
   top: 0;
   z-index: 10;
   background-color: var(--color-bg);
+  border-radius: 0 0 20px 20px;
+  transition: background-color 0.3s ease-in-out;
+
+  &.scrolled {
+    background-color: var(--color-white);
+    .inner {
+      padding: 17px 0;
+    }
+  }
 }
 
 .inner {
+  transition: padding 0.3s ease-in-out;
   display: flex;
   align-items: center;
   justify-content: space-between;

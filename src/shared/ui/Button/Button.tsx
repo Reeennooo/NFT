@@ -15,8 +15,8 @@ interface IProps {
 }
 
 type ButtonStyle = 'primary' | 'secondary';
-type ButtonTextTransform = 'textUppercase' | 'textNormal';
-type ButtonSize = 'large' | 'medium' | 'normal' | 'small';
+type ButtonTextTransform = 'textUppercase' | 'textInitial';
+type ButtonSize = 'large' | 'medium' | 'standard' | 'small';
 type ButtonFontFamily = 'inter' | 'poppins' | 'publicSans';
 
 export const Button: FC<IProps> = memo((props) => {
@@ -25,8 +25,8 @@ export const Button: FC<IProps> = memo((props) => {
     width,
     className,
     style,
-    textTransform = 'normal',
-    size = 'normal',
+    textTransform = 'intial',
+    size = 'standard',
     fontFamily = 'inter',
     onClick
   } = props;

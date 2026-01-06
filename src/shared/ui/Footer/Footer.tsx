@@ -1,27 +1,31 @@
-import {type FC, memo, type ReactNode, type Ref} from 'react';
-import {Container} from '../Container/Container.tsx';
+import {memo} from 'react';
+import styles from './Footer.module.scss';
+import LogoSvg from 'shared/assets/logo.svg?react'
+import {Container} from 'shared/ui/Container/Container.tsx';
+import {SocialLinks} from 'shared/ui/SocialLinks/SocialLinks.tsx';
 
-interface IProps {
-  children: ReactNode;
-  innerRef?: Ref<HTMLElement>;
-}
-
-export const Footer: FC<IProps> = memo((props) => {
-  const {children, innerRef} = props;
+export const Footer = memo(() => {
   return (
-    <footer
-      className="
-      w-full
-      bg-background
-      pt-4
-      pb-10
-      fixed
-      bottom-0
-      "
-      ref={innerRef}
-    >
+    <footer className={styles.root}>
       <Container>
-        {children}
+        <div className={styles.inner}>
+          <div className={styles.top}>
+            <div className={styles.logo}>
+              <LogoSvg className={styles.logoSvg} />
+              DiveSea
+            </div>
+            <div className={styles.navigation}>
+              <a href={'#'}>Privacy Policy</a>
+              <a href={'#'}>Term & Conditions</a>
+              <a href={'#'}>About Us</a>
+              <a href={'#'}>Contact</a>
+            </div>
+          </div>
+          <div className={styles.social}>
+            <p className={styles.rights}>© 2023 <span>DiveSea All Rights Reserved.</span></p>
+            <SocialLinks />
+          </div>
+        </div>
       </Container>
     </footer>
   );

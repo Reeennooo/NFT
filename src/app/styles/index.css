@@ -104,6 +104,10 @@ h6 {
   --color-94A3B8: #94A3B8;
   --color-1C1D2059: #1C1D2059;
   --color-1C1D2014: #1C1D2014;
+  --color-E6E8EC: #E6E8EC;
+  --color-C7C7C799: #C7C7C799;
+  --color-D4D4D4: #D4D4D4;
+  --color-535353: #535353;
 
   /* Typography */
   --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
