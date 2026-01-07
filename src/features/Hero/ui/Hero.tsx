@@ -4,6 +4,7 @@ import {Button} from 'shared/ui/Button/Button.tsx';
 import {StatisticItem} from 'features/Hero/ui/StatisticItem.tsx';
 import {HeroDecor} from 'features/Hero/ui/HeroDecor.tsx';
 import {motion, easeOut} from 'framer-motion';
+import classNames from 'classnames';
 
 const containerVariants = {
   hidden: {},
@@ -40,9 +41,13 @@ export const Hero = () => {
             initial="hidden"
             animate="visible"
           >
-            <motion.h1 className={styles.title} variants={itemVariants}>
-              Discover And<br/>Create NFTs
-            </motion.h1>
+            <motion.div className={styles.title} variants={itemVariants}>
+              <div className={styles.statisticsMobile}>
+                <div className={styles.statisticsMobile__line}/>
+                <span>OVER 1M CREATORS</span>
+              </div>
+              <h1>Discover And<br/>Create NFTs</h1>
+            </motion.div>
             <motion.p variants={itemVariants} className={styles.text}>
               Discover, Create and Sell NFTs On Our NFT Marketplace<br/>With Over Thousands Of NFTs And Get a <span className={styles.bold}>$20 bonus</span>.
             </motion.p>
@@ -52,7 +57,6 @@ export const Hero = () => {
                 style={'primary'}
                 size={'medium'}
                 textTransform={'textUppercase'}
-                width={'180px'}
                 onClick={() => {}}
                 className={styles.button}
               />
@@ -61,9 +65,8 @@ export const Hero = () => {
                 style={'secondary'}
                 size={'medium'}
                 textTransform={'textUppercase'}
-                width={'140px'}
                 onClick={() => {}}
-                className={styles.button}
+                className={classNames(styles.button, styles.small)}
               />
             </motion.div>
             <motion.div variants={itemVariants} className={styles.statistics}>

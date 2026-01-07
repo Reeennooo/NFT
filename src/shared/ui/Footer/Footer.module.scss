@@ -1,3 +1,5 @@
+@use "app/styles/_breakpoints.scss" as *;
+
 .root {
   padding: 88px 0 86px;
   background-color: var(--color-text);
@@ -5,9 +7,12 @@
 
 .top {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto;
+
   justify-content: space-between;
   column-gap: 20px;
+  row-gap: 20px;
   padding-bottom: 25px;
 
   &::before {
@@ -27,30 +32,12 @@
   display: flex;
   align-items: center;
   column-gap: 70px;
-
   font-family: var(--font-inter);
   font-weight: 500;
   font-size: 17px;
   line-height: 26px;
   color: #B9B9B9;
   letter-spacing: 0.5px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
-  font-family: var(--font-poppins);
-  font-size: 30px;
-  line-height: 130%;
-  font-weight: 600;
-  color: var(--color-white);
-}
-
-.logoSvg {
-  width: 65px;
-  height: 65px;
-  fill: var(--color-white);
 }
 
 .rights {
@@ -70,4 +57,68 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.socialMobile {
+  display: none;
+}
+
+.socialDesktop {
+  display: flex;
+}
+
+@media (max-width: $bp-lg) {
+  .root {
+    padding: 60px 0;
+  }
+
+  .logo {
+    font-size: 21px;
+    line-height: 130%;
+  }
+
+  .logoSvg {
+    width: 46px;
+    height: 46px;
+  }
+
+  .navigation {
+    column-gap: 50px;
+    font-size: 12px;
+    line-height: 19px;
+    letter-spacing: 0.5px;
+  }
+
+  .social {
+    padding-top: 40px;
+  }
+
+  .rights {
+    font-size: 12px;
+    line-height: 17px;
+  }
+}
+
+@media (max-width: $bp-md) {
+  .socialMobile {
+    display: flex;
+    column-gap: 10px;
+  }
+  .socialDesktop {
+    display: none;
+  }
+  .navigation {
+    flex-direction: column;
+    align-items: start;
+    row-gap: 30px;
+    text-transform: uppercase;
+  }
+  .social {
+    justify-content: center;
+  }
+  .rights {
+    span {
+      display: inline;
+    }
+  }
 }

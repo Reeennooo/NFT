@@ -13,6 +13,7 @@ import Inst from 'shared/assets/socials/inst.svg?react';
 import Twitter from 'shared/assets/socials/twitter.svg?react';
 import Facebook from 'shared/assets/socials/facebook.svg?react';
 import Linkedin from 'shared/assets/socials/linkedin.svg?react';
+import Burger from 'shared/assets/icons/burger.svg?react';
 
 export type IconList =
   'cross'
@@ -27,6 +28,7 @@ export type IconList =
   | 'twitter'
   | 'facebook'
   | 'linkedin'
+  | 'burger'
   | 'warning';
 
 interface IProps {
@@ -84,5 +86,7 @@ export const Icon: FC<IProps> = memo(function Icon(props) {
     return <Linkedin {...properties} />;
   case 'facebook':
     return <Facebook {...properties} />;
+  case 'burger':
+    return <Burger {...properties} />;
   }
 });

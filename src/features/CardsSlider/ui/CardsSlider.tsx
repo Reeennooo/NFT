@@ -2,11 +2,43 @@ import styles from './CardsSlider.module.scss';
 import {Card} from 'shared/ui/Card/Card.tsx';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import {useRef} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {SquircleWrap} from 'shared/ui/SquircleWrap/SquircleWrap.tsx';
 import {Icon} from 'shared/ui/Icon/Icon.tsx';
+import {type NftCard, useGetNftsListQuery} from 'entities/nftCards';
+import {getRandomFloat, getRandomImage, getRandomTimestampWithinDay} from 'shared/utils';
+import {useWindowWidth} from 'shared/hooks/useWindowWidth.ts';
+
+const imagesPaths = [
+  '/images/cards/1.jpg',
+  '/images/cards/2.jpg',
+  '/images/cards/3.jpg',
+  '/images/cards/4.jpg',
+  '/images/cards/5.jpg',
+];
 
 export const CardsSlider = () => {
+  const {cards} = useGetNftsListQuery(undefined, {
+    selectFromResult: ({ data }): {cards: NftCard[]} => ({
+      cards: data?.map(card => ({
+        id: card.id,
+        title: card.name,
+        image: getRandomImage(imagesPaths),
+        bid: getRandomFloat(),
+        timestamp: getRandomTimestampWithinDay(),
+      })) || [],
+    })
+  });
+
+  const windowWidth = useWindowWidth();
+  const [isTablet, setIsTablet] = useState(
+    typeof window !== 'undefined' && window.innerWidth <= 1024
+  )
+  useEffect(() => {
+    setIsTablet(window.innerWidth <= 1024)
+  }, [
+    windowWidth
+  ])
 
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
@@ -15,9 +47,11 @@ export const CardsSlider = () => {
     <section className={styles.root}>
       <h2 className={styles.title}>Weekly - Top NFT</h2>
       <Swiper
-        style={{padding: '70px 0'}}
+        className={styles.swiper}
         slidesPerView='auto'
-        spaceBetween={40}
+        spaceBetween={isTablet ? 32 : 40}
+        initialSlide={Math.floor(cards.length / 2)}
+        centeredSlides={true}
         loop={true}
         modules={[Navigation]}
         navigation={{
@@ -39,40 +73,17 @@ export const CardsSlider = () => {
           })
         }}
       >
-        <SwiperSlide className={styles.slide}>
-          <Card image={'/images/cards/1.jpg'} title={'Sun-Glass'} bid={1.75} />
-        </SwiperSlide>
-        <SwiperSlide className={styles.slide}>
-          <Card image={'/images/cards/1.jpg'} title={'Sun-Glass'} bid={1.75} />
-        </SwiperSlide>
-        <SwiperSlide className={styles.slide}>
-          <Card image={'/images/cards/1.jpg'} title={'Sun-Glass'} bid={1.75} />
-        </SwiperSlide>
-        <SwiperSlide className={styles.slide}>
-          <Card image={'/images/cards/1.jpg'} title={'Sun-Glass'} bid={1.75} />
-        </SwiperSlide>
-        <SwiperSlide className={styles.slide}>
-          <Card image={'/images/cards/1.jpg'} title={'Sun-Glass'} bid={1.75} />
-        </SwiperSlide>
-        <SwiperSlide className={styles.slide}>
-          <Card image={'/images/cards/1.jpg'} title={'Sun-Glass'} bid={1.75} />
-        </SwiperSlide>
-        <SwiperSlide className={styles.slide}>
-          <Card image={'/images/cards/1.jpg'} title={'Sun-Glass'} bid={1.75} />
-        </SwiperSlide>
-        <SwiperSlide className={styles.slide}>
-          <Card image={'/images/cards/1.jpg'} title={'Sun-Glass'} bid={1.75} />
-        </SwiperSlide>
-        <SwiperSlide className={styles.slide}>
-          <Card image={'/images/cards/1.jpg'} title={'Sun-Glass'} bid={1.75} />
-        </SwiperSlide>
-        <SwiperSlide className={styles.slide}>
-          <Card image={'/images/cards/1.jpg'} title={'Sun-Glass'} bid={1.75} />
-        </SwiperSlide>
+        {
+          cards.map((card: NftCard) => (
+            <SwiperSlide className={styles.slide} key={card.id}>
+              <Card image={card.image} title={card.title} bid={card.bid} timestamp={card.timestamp} />
+            </SwiperSlide>
+          ))
+        }
       </Swiper>
       <div className={styles.navigationWrapper}>
         <div className={styles.navigationRoot}>
-          <SquircleWrap className={styles.navigation}>
+          <SquircleWrap className={styles.navigation} cornerRadius={isTablet ? 12 : 24}>
             <button ref={prevRef}>
               <Icon name={'arrow-left'} properties={{className: styles.arrow}} />
             </button>

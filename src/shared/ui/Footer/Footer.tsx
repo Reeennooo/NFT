@@ -1,8 +1,8 @@
 import {memo} from 'react';
 import styles from './Footer.module.scss';
-import LogoSvg from 'shared/assets/logo.svg?react'
 import {Container} from 'shared/ui/Container/Container.tsx';
 import {SocialLinks} from 'shared/ui/SocialLinks/SocialLinks.tsx';
+import {LogoDiveSea} from 'shared/ui/LogoDiveSea/LogoDiveSea.tsx';
 
 export const Footer = memo(() => {
   return (
@@ -10,10 +10,8 @@ export const Footer = memo(() => {
       <Container>
         <div className={styles.inner}>
           <div className={styles.top}>
-            <div className={styles.logo}>
-              <LogoSvg className={styles.logoSvg} />
-              DiveSea
-            </div>
+            <LogoDiveSea color={'light'} size={'medium'} showText={true} />
+            <SocialLinks className={styles.socialMobile} />
             <div className={styles.navigation}>
               <a href={'#'}>Privacy Policy</a>
               <a href={'#'}>Term & Conditions</a>
@@ -23,7 +21,7 @@ export const Footer = memo(() => {
           </div>
           <div className={styles.social}>
             <p className={styles.rights}>© 2023 <span>DiveSea All Rights Reserved.</span></p>
-            <SocialLinks />
+            <SocialLinks className={styles.socialDesktop} />
           </div>
         </div>
       </Container>

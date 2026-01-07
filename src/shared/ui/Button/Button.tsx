@@ -2,14 +2,15 @@ import {type FC, memo, useMemo} from 'react';
 import {SquircleWrap} from '../SquircleWrap/SquircleWrap.tsx';
 import styles from './Button.module.scss';
 import classNames from 'classnames';
+import {useWindowWidth} from 'shared/hooks/useWindowWidth.ts';
 
 interface IProps {
   text: string;
   onClick: () => void;
   style: ButtonStyle;
   size: ButtonSize;
-  width: string;
   textTransform?: ButtonTextTransform;
+  cornerRadiusProp?: number;
   fontFamily?: ButtonFontFamily;
   className?: string;
 }
@@ -22,28 +23,38 @@ type ButtonFontFamily = 'inter' | 'poppins' | 'publicSans';
 export const Button: FC<IProps> = memo((props) => {
   const {
     text,
-    width,
     className,
     style,
     textTransform = 'intial',
     size = 'standard',
     fontFamily = 'inter',
-    onClick
+    onClick,
+    cornerRadiusProp
   } = props;
-
+  const windowWidth = useWindowWidth();
   const cornerRadius = useMemo(() => {
-    if (
-      size === 'small'
-      || size === 'medium'
-      || size === 'large'
-    ) {
-      return 12
+    if (cornerRadiusProp) {
+      return cornerRadiusProp
     }
-    return 16
-  }, [
-    size
-  ])
 
+    if (windowWidth < 750) {
+      return 6;
+    }
+
+    if (
+      size === 'medium'
+      || size === 'large'
+      || size === 'small'
+    ) {
+      return 12;
+    }
+
+    return 16;
+  }, [
+    size,
+    windowWidth,
+    cornerRadiusProp
+  ])
   const cornerRadiusInner = cornerRadius - 2;
 
   const onClickCustom = () => {
@@ -52,7 +63,6 @@ export const Button: FC<IProps> = memo((props) => {
 
   return (
     <button
-      style={{width}}
       className={classNames(styles.root,
         styles[style],
         styles[size],

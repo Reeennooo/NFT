@@ -1,10 +1,17 @@
+@use "app/styles/_breakpoints.scss" as *;
+
 .root {
+  position: relative;
+}
+
+.wrapper {
   padding: 31px 31px 31px 66px;
   background-color: var(--color-text);
   display: flex;
   justify-content: space-between;
   align-items: center;
   column-gap: 20px;
+  overflow: visible;
 }
 
 .title {
@@ -32,6 +39,7 @@
   margin-top: 57px;
 
   button {
+    width: 180px;
     font-weight: 600;
     font-size: 21px;
     line-height: 130%;
@@ -47,5 +55,121 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+}
+
+.imageMobile {
+  display: none;
+}
+
+@media (max-width: $bp-lg) {
+  .wrapper {
+    padding: 23px 22px 23px 47px;
+  }
+
+  .title {
+    font-size: 33px;
+    line-height: 36px;
+    margin-bottom: 15px;
+  }
+
+  .text {
+    font-size: 15px;
+    line-height: 16px;
+  }
+
+  .buttons {
+    column-gap: 18px;
+    margin-top: 42px;
+
+
+    button {
+      width: 135px;
+      font-size: 15px;
+    }
+  }
+
+  .image {
+    width: 263px;
+    height: 186px;
+  }
+}
+
+@media (max-width: $bp-md) {
+  .wrapper {
+    padding: 22px 20px 87px;
+  }
+  .bannerSection {
+    padding: 70px 0 162px;
+  }
+
+  .image {
+    display: none;
+  }
+
+  .imageMobile {
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: -80%;
+    width: 80%;
+    transform: translateX(-50%);
+    height: auto;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .textContent {
+    flex-grow: 1;
+  }
+
+  .title,
+  .text {
+    text-align: center;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .imageMobile {
+    bottom: -62%;
+  }
+}
+
+@media (max-width: $bp-xs) {
+  .imageMobile {
+    bottom: -40%;
+    width: 90%;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: 1px;
+    margin-bottom: 9px;
+  }
+
+  .text {
+    font-size: 10px;
+    line-height: 130%;
+    opacity: 0.6;
+  }
+
+  .buttons {
+    margin-top: 22px;
+    column-gap: 14px;
+
+    button {
+      width: 91px;
+      font-size: 10px;
+      line-height: 130%;
+    }
   }
 }

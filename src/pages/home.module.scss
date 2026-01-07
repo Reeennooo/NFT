@@ -1,3 +1,23 @@
+@use "app/styles/_breakpoints.scss" as *;
+
 .bannerSection {
   padding: 120px 0;
+}
+
+@media (max-width: $bp-lg) {
+  .bannerSection {
+    padding: 90px 0;
+  }
+}
+
+@media (max-width: $bp-md) {
+  .bannerSection {
+    padding: 70px 0 250px;
+  }
+}
+
+@media (max-width: $bp-xs) {
+  .bannerSection {
+    padding: 70px 0 162px;
+  }
 }

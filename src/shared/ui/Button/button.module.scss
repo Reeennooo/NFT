@@ -1,3 +1,5 @@
+@use "app/styles/_breakpoints.scss" as *;
+
 .root {
   cursor: pointer;
 
@@ -11,10 +13,12 @@
       background-color: var(--color-primary);
     }
 
-    &:hover {
-      .inner {
-        color: var(--color-text);
-        background-color: var(--color-D7D7D7);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        .inner {
+          color: var(--color-text);
+          background-color: var(--color-D7D7D7);
+        }
       }
     }
   }
@@ -29,16 +33,20 @@
       background-color: var(--color-bg);
     }
 
-    &:hover {
-      .rootSquircle {
-        background-color: var(--color-white);
-      }
 
-      .inner {
-        color: var(--color-text);
-        background-color: var(--color-D7D7D7);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        .rootSquircle {
+          background-color: var(--color-white);
+        }
+
+        .inner {
+          color: var(--color-text);
+          background-color: var(--color-D7D7D7);
+        }
       }
     }
+
   }
 
   &.textUppercase {
@@ -98,5 +106,30 @@
   white-space: nowrap;
 }
 
+@media (max-width: $bp-lg) {
+  .root {
+    &.large {
+      height: 51px;
+    }
 
+    &.medium {
+      height: 42px;
+    }
 
+    &.standard {
+      height: 40px;
+    }
+
+    &.small {
+      height: 38px;
+    }
+  }
+}
+
+@media (max-width: $bp-xs) {
+  .root {
+    &.large {
+      height: 34px;
+    }
+  }
+}
