@@ -9,7 +9,9 @@ import {store} from 'shared/store';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter
+      basename={import.meta.env.PROD ? '/NFT' : '/'}
+    >
       <Provider store={store}>
         <App />
       </Provider>
