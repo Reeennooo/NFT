@@ -1,69 +1,92 @@
-# React + TypeScript + Vite
+# NFT App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend-приложение для NFT-проекта, построенное на **React + TypeScript** с использованием архитектуры **FSD (Feature-Sliced Design)**.  
+Проект использует современный стек, анимации, слайдеры и масштабируемую структуру для дальнейшего развития.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Стек технологий
 
-## Expanding the ESLint configuration
+### Основные
+- **React 19**
+- **TypeScript**
+- **Vite**
+- **React Router DOM v7**
+- **Redux Toolkit**
+- **React Redux**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### UI / UX
+- **Framer Motion** — анимации
+- **Swiper** — слайдеры
+- **Sass (SCSS)** — стили
+- **classnames** — управление классами
+- **@squircle-js/react** — кастомные скругления
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Формы
+- **React Hook Form**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Качество кода
+- **ESLint**
+- **TypeScript ESLint**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 📁 Архитектура проекта (FSD)
+
+Проект построен по методологии **Feature-Sliced Design**, что упрощает масштабирование и поддержку кода.
+
+src/
+├── app/ # Инициализация приложения (providers, store, router)
+├── pages/ # Страницы приложения (роуты)
+├── features/ # Фичи (бизнес-логика, пользовательские сценарии)
+├── entities/ # Сущности (модели, UI-компоненты, связанные с бизнес-объектами)
+├── shared/ # Переиспользуемые части (ui, lib, api, config)
+
+### Краткое описание слоёв
+
+- **app** — точка входа, глобальные провайдеры, роутинг, store
+- **pages** — композиция фич и сущностей для конкретных страниц
+- **features** — логика действий пользователя (формы, фильтры, интеракции)
+- **entities** — бизнес-сущности (NFT, User и т.д.)
+- **shared** — общие компоненты, утилиты, хуки, стили
+
+---
+
+## 📜 Скрипты
+
+```bash
+# Запуск проекта в режиме разработки
+npm run dev
+
+# Сборка проекта
+npm run build
+
+# Предпросмотр production-сборки
+npm run preview
+
+# Проверка линтером
+npm run lint
+
+# Автоисправление lint-ошибок
+npm run lint:fix
+
+# Установка зависимостей
+npm install
+
+# Запуск dev-сервера
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Docker
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Сборка образа
+docker build -t nft-app .
+
+# Запуск контейнера
+docker run -p 4173:4173 nft-app
+
+# Приложение будет доступно по адресу:
+http://localhost:4173
 ```
